@@ -6,7 +6,7 @@ The setup includes:
 * box:       precise64 (http://files.vagrantup.com/precise64.box)
 * webserver: apache
 * database:  mysql
-* PHP:       PHP 5.4
+* PHP:       PHP 5.5
 
 Next steps:
 -----------

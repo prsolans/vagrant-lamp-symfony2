@@ -13,7 +13,7 @@ and title != 'software-properties-common'
 
     apt::key { '4F4EA0AAE5267A6C': }
 
-apt::ppa { 'ppa:ondrej/php5-oldstable':
+apt::ppa { 'ppa:ondrej/php5':
   require => Apt::Key['4F4EA0AAE5267A6C']
 }
 
@@ -37,11 +37,11 @@ apache::dotconf { 'custom':
 
 apache::module { 'rewrite': }
 
-apache::vhost { 'bizgym.dev':
-  server_name   => 'bizgym.dev',
+apache::vhost { 'awesome.dev':
+  server_name   => 'awesome.dev',
   serveraliases => [
 ],
-  docroot       => '/var/www/BizGym/public',
+  docroot       => '/var/www/',
   port          => '80',
   env_variables => [
 ],
@@ -141,7 +141,7 @@ puphpet::ini { 'xdebug':
 
 puphpet::ini { 'php':
   value   => [
-    'date.timezone = "America/Chicago"'
+    'date.timezone = "UTC"'
   ],
   ini     => '/etc/php5/conf.d/zzz_php.ini',
   notify  => Service['apache'],
@@ -151,7 +151,8 @@ puphpet::ini { 'php':
 puphpet::ini { 'custom':
   value   => [
     'display_errors = On',
-    'error_reporting = -1'
+    'error_reporting = -1',
+    'html_errors = On'
   ],
   ini     => '/etc/php5/conf.d/zzz_custom.ini',
   notify  => Service['apache'],
@@ -163,6 +164,16 @@ class { 'mysql::server':
   config_hash   => { 'root_password' => 'root' }
 }
 
+mysql::db { 'awesome_db':
+  grant    => [
+    'ALL'
+  ],
+  user     => 'root',
+  password => 'root',
+  host     => 'localhost',
+  charset  => 'utf8',
+  require  => Class['mysql::server'],
+}
 
 class { 'phpmyadmin':
   require => [Class['mysql::server'], Class['mysql::config'], Class['php']],
