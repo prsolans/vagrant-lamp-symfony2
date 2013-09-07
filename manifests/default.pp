@@ -141,7 +141,7 @@ puphpet::ini { 'xdebug':
 
 puphpet::ini { 'php':
   value   => [
-    'date.timezone = "UTC"'
+    'date.timezone = "America/Chicago"'
   ],
   ini     => '/etc/php5/conf.d/zzz_php.ini',
   notify  => Service['apache'],
@@ -164,7 +164,7 @@ class { 'mysql::server':
   config_hash   => { 'root_password' => 'root' }
 }
 
-mysql::db { 'awesome_db':
+mysql::db { 'symfony':
   grant    => [
     'ALL'
   ],
