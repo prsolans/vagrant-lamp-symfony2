@@ -5,8 +5,8 @@
         "local": {
             "url": "http:\/\/files.vagrantup.com\/precise64.box",
             "name": "precise64",
-            "personal_name": "SaasVentures",
-            "ip": "192.168.86.68",
+            "personal_name": "PRSWebDev - Symfony 2.3.1",
+            "ip": "192.168.19.77",
             "memory": "1024",
             "port_forward": {
                 "host": "8080",
@@ -55,7 +55,7 @@
         ],
         "vhosts": {
             "1": {
-                "servername": "awesome.dev",
+                "servername": "prsweb.dev",
                 "serveraliases": "",
                 "docroot": "\/var\/www\/",
                 "port": "80",
@@ -66,7 +66,7 @@
     "nginx": {
         "vhosts": {
             "1": {
-                "servername": "awesome.dev",
+                "servername": "prsweb.dev",
                 "serveraliases": "",
                 "docroot": "\/var\/www\/",
                 "port": "80",
@@ -101,7 +101,7 @@
         "inilist": {
             "xdebug": "xdebug.default_enable = 1,xdebug.remote_autostart = 0,xdebug.remote_connect_back = 1,xdebug.remote_enable = 1,xdebug.remote_handler = dbgp,xdebug.remote_port = 9000",
             "php": {
-                "date.timezone": "UTC"
+                "date.timezone": "America/Chicago"
             },
             "custom": "display_errors = On,error_reporting = -1,html_errors = On"
         }
@@ -117,7 +117,7 @@
                 ],
                 "user": "root",
                 "password": "<REMOVED>",
-                "dbname": "awesome_db",
+                "dbname": "symfony",
                 "host": "localhost",
                 "sql": ""
             }
