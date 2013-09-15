@@ -69,8 +69,6 @@ class { 'php::pear':
   require => Class['php'],
 }
 
-
-
 $xhprofPath = '/var/www/xhprof'
 
 php::pecl::module { 'xhprof':
@@ -116,13 +114,16 @@ apache::vhost { 'xhprof':
   ]
 }
 
-
 class { 'xdebug':
   service => 'apache',
 }
 
-class { 'composer':
-  require => Package['php5', 'curl'],
+class composer {
+  exec { 'composer_install':
+    command => 'curl -sS https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer',
+    path    => '/usr/bin:/usr/sbin',
+    require => Package['curl'],
+  }
 }
 
 puphpet::ini { 'xdebug':
@@ -186,4 +187,3 @@ apache::vhost { 'phpmyadmin':
   priority    => '10',
   require     => Class['phpmyadmin'],
 }
-
