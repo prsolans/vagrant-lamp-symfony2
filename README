@@ -3,24 +3,30 @@ https://github.com/prsolans/vagrant-lamp.git
 This repo was created to facilitate quick setup for new Symfony2 projects. Follow these steps once clone the repo.
 
 Symfony2 installation steps
-Customize VM name in VagrantFile and pupphet.json
-vagrant up
-vagrant ssh
-cd /var/www/
-//curl -s https://getcomposer.org/installer | php
-composer create-project symfony/framework-standard-edition {{RENAME}}/ 2.3.1
-cd {{RENAME}}/
-Composer update
-Set timezone in php.ini (apache & cli)
-php app/check.php - confirm set up
-sudo /etc/init.d/apache2 restart
-Change composer.json minimun-stability to 'dev'
-Add Bundles one at a time:
-http://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
-https://github.com/jordillonch/CrudGeneratorBundle
 
+Prepare the environment
+- Customize VM name in VagrantFile and pupphet.json
+- vagrant up
+- vagrant ssh
+- cd /var/www/
 
-Adjust app_dev.php to allow viewing
+Install base symfony
+- composer create-project symfony/framework-standard-edition {{RENAME}}/ 2.3.1
+- cd {{RENAME}}/
+- Composer update
+- Set timezone in php.ini (/etc/php5/apache & /etc/php5/cli)
+- php app/check.php - confirm set up
+- sudo /etc/init.d/apache2 restart
+- Adjust app_dev.php to allow viewing
+
+Add bundles one at a time:
+- Change composer.json minimun-stability to 'dev'
+- Add Migrations Bundle
+  http://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
+- Add Admin Bundle
+  https://github.com/jordillonch/CrudGeneratorBundle
+
+Access the site at the URL set in the Vagrantfile and configure the basic symfony settings
 Configure Symfony DB (root|root)
 
 
