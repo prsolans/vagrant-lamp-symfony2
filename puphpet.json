@@ -5,8 +5,8 @@
         "local": {
             "url": "http:\/\/files.vagrantup.com\/precise64.box",
             "name": "precise64",
-            "personal_name": "Picks - Symfony 2.3.4",
-            "ip": "192.168.19.77",
+            "personal_name": "BASE - Symfony 2.3.1",
+            "ip": "192.168.20.13",
             "memory": "1024",
             "port_forward": {
                 "host": "8080",
